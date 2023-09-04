@@ -1,0 +1,131 @@
+From 49d260c16cb47636cf00985dd1e57658ddb44e0e Mon Sep 17 00:00:00 2001
+From: Dev Marlecha <dev.marlecha034@nmims.edu.in>
+Date: Mon, 4 Sep 2023 13:59:34 +0530
+Subject: [PATCH] Fixing bug in client and addin client_test
+
+---
+ __pycache__/client3.cpython-311.pyc | Bin 0 -> 1934 bytes
+ client3.py                          |  10 +++++++---
+ client_test.py                      |  20 +++++++++++++++++++-
+ 3 files changed, 26 insertions(+), 4 deletions(-)
+ create mode 100644 __pycache__/client3.cpython-311.pyc
+
+diff --git a/__pycache__/client3.cpython-311.pyc b/__pycache__/client3.cpython-311.pyc
+new file mode 100644
+index 0000000000000000000000000000000000000000..d2f1395f8099d228de6999b0c8c862b2fd186cbf
+GIT binary patch
+literal 1934
+zcmaJ>O>7fK6rS<^cpckGoIe`kRtr*EOvxXJl18B@V5j0hnm|Eh<zj6-ldy^HHM<)S
+zZX)^6!&0Hjm5{JhD&>GuDlVw13P&n&>d6~f#agLSq@K80qP=kHn{^x~NM&c{?RztC
+zzIlH$KZV0>2)^#`{v}%hg#Kni^9%1Vum8jd-A4owoIy(Cj}`36K7}Jbg(sXM5dIsa
+zh(rMDrxFoYd~Cn*hY!&Jj5aE40?uO?jc>mcM_)Zvf}n?%Lro3JEjMjI8|}^6y?@GY
+zbnKOzJmBEv)=4n^xVeP(pSxe$=-gG?!)(4|zY+-`4JlnT0v?Pg-Egu<yZ56ed4!Z6
+zrB~@w4$uR%i}p+cB51xx{Iur>OeES1G(h`+w$TGXgFgoLV_<Z5)Y}mP>Ze^K+`nrf
+zNbN0Y6XO2Zi#<~)i0Cbk0qHk_FF`ghp;*T&rZiJHbltM@6C)!TJ*{T0>!vj^J~}=+
+za$}Vmx6f$g^w;a!KM>FKZcJepc!f9^uO9%pj{;~7Fk5!4V{4B#tod4NglqBp{ap9G
+zwTo|QzGD}+=3C<mU<VNjL4?-%HOyw#_(dMP6bq;1SwknQX)3FkjBH(}a*k3$iF{Md
+ztWs09ba{#9sG(Y*ArsY7^SYL^WLGdPJ-y=kEj^!F(1<JK4J}O@vTClpVu6lfS6IyG
+zsudGl;l`?NQG><C4Zwy}Lq7nz4c35!AX5M$v+vDRdLnt*q=uO!^k!B~evzYbL%T_n
+zacZu>smVp%P?zY?az2|LGH=l#3!sL^lIe^_bJmIB{B1Y1M6EcOJj+Zr*hP`q848dh
+z+U6%~p-AbYyEDbaU!A=rT0URx`*7n{wQt1f9IbYa7SI3BbS>Oh?svk6H>RA>U@=h(
+zc9vr0`A0$}I8@<>UIRKx@75UzjQ8r{17N&*zy$BS0zTrq1og3oS#}^JT;Z_%IkjX6
+zxTeecqU?n!rOIlK?C=Y+!4PMDMlql3-&t=m3np8WWrIBst^@(N$dHU45Rbwz-v`og
+zUg{`~eH*evHL2YeYr(G4sXJ#X{6T{~9Ili~WmPSgN)`NbEOA6G1Z35ck3i}s3gR&t
+zf;~}?jx}tWc!OgF$va6NG+l1$>^YZ<C#GZlF28K*Iaf5mem(29uNs+*wlHi^xIw1n
+ziVfKn<}N2L&bxTV%aUg;Ga;vDX)5LN8dQ!e0LBt^amp2-rikhKn<#!j(eo6Jfttvw
+zmdhJdC9dd|oau^Qj7)>Q=w1OD5Nl+x=hQ1YuXdq8B5Z<r?*;FTG?|5)k)fX%AHy8G
+zvStowox>Q{k0Kl@23f12aM5cu)LUuxx`+bDiURxusfg>M9}m~jF6j~QKppLpF2slI
+z!WP$G;rh435&O&1U}><7zdv&C$en9<uhmhTa1J-9jcbvCQqR4E<>?1AFQdn|qQ{?{
+zd^-8d<n!=z@kRLeju#!yiP`FjStmMIjn2J{UfGIXaiUkN(W_2mz8aag#ck<aEz%7c
+z?*$vU00Cr1?L=+t^pof_>Wsy!V{s=mY$r;embFK{wdf&xx^(i+1-LGD!cII}W$n4f
+zT4hez=}EQH=v@m=C|wPuD_-B0!nR;9m&eQF8`F<YKD_YclV^j!o^}SNssmF_`;;S{
+Wtx9JrUa$8f{vgDl&bJ))^6?*2k>F$i
+
+literal 0
+HcmV?d00001
+
+diff --git a/client3.py b/client3.py
+index 3fc09b7..9e9d7a6 100644
+--- a/client3.py
++++ b/client3.py
+@@ -35,14 +35,16 @@ def getDataPoint(quote):
+     stock = quote['stock']
+     bid_price = float(quote['top_bid']['price'])
+     ask_price = float(quote['top_ask']['price'])
+-    price = bid_price
++    price = (bid_price + ask_price)/2
+     return stock, bid_price, ask_price, price
+ 
+ 
+ def getRatio(price_a, price_b):
+     """ Get ratio of price_a and price_b """
+     """ ------------- Update this function ------------- """
+-    return 1
++    if (price_b == 0):
++        return
++    return price_a/price_b
+ 
+ 
+ # Main
+@@ -52,8 +54,10 @@ if __name__ == "__main__":
+         quotes = json.loads(urllib.request.urlopen(QUERY.format(random.random())).read())
+ 
+         """ ----------- Update to get the ratio --------------- """
++        prices = {}
+         for quote in quotes:
+             stock, bid_price, ask_price, price = getDataPoint(quote)
++            prices[stock] = price
+             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
+ 
+-        print("Ratio %s" % getRatio(price, price))
++        print("Ratio %s" % getRatio(prices["ABC"], prices["DEF"]))
+diff --git a/client_test.py b/client_test.py
+index af2bf26..d90ac49 100644
+--- a/client_test.py
++++ b/client_test.py
+@@ -1,5 +1,7 @@
++from typing import Self
+ import unittest
+ from client3 import getDataPoint
++from client3 import getRatio
+ 
+ class ClientTest(unittest.TestCase):
+   def test_getDataPoint_calculatePrice(self):
+@@ -8,6 +10,8 @@ class ClientTest(unittest.TestCase):
+       {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+     ]
+     """ ------------ Add the assertion below ------------ """
++    for quote in quotes:
++       self.assertEqual(getDataPoint(quote), (quote['stock'], quote['top_bid']['price'], quote['top_ask']['price'], (quote['top_bid']['price'] + quote['top_ask']['price'])/2))
+ 
+   def test_getDataPoint_calculatePriceBidGreaterThanAsk(self):
+     quotes = [
+@@ -15,10 +19,24 @@ class ClientTest(unittest.TestCase):
+       {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+     ]
+     """ ------------ Add the assertion below ------------ """
+-
++    for quote in quotes:
++       self.assertEqual(getDataPoint(quote), (quote['stock'], quote['top_bid']['price'], quote['top_ask']['price'], (quote['top_bid']['price'] + quote['top_ask']['price'])/2))
+ 
+   """ ------------ Add more unit tests ------------ """
++  def test_getRatio_valid_ratio(self):
++        # Test with valid ratio
++        ratio = getRatio(10.0, 5.0)
++        self.assertEqual(ratio, 2.0)
++
++  def test_getRatio_price_b_zero(self):
++        # Test when price_b is zero
++        ratio = getRatio(10.0, 0.0)
++        self.assertIsNone(ratio)
+ 
++  def test_getRatio_both_prices_zero(self):
++        # Test when both prices are zero
++        ratio = getRatio(0.0, 0.0)
++        self.assertIsNone(ratio)
+ 
+ 
+ if __name__ == '__main__':
+-- 
+2.42.0.windows.1
+
